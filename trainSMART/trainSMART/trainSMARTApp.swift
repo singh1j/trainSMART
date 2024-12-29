@@ -14,6 +14,7 @@ struct trainSMARTApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(userData)
+            
         }
     }
 }

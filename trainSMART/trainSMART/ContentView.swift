@@ -1,54 +1,63 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var showSplashScreen = true // State to control the splash screen
+
     var body: some View {
-        NavigationView {
+        if showSplashScreen {
             SplashScreen()
-        }
-    }
-}
-struct SplashScreen: View {
-    @StateObject private var userData = UserData()
-    @State private var navigateToLogin = false // State to control navigation
-    var body: some View {
-        VStack {
-            Spacer()
-                // Logo Image
-                Image("trainSMARTLogo") // Make sure this matches your asset name
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 600, height: 350) // Adjust as per your logo dimensions
-            Spacer()
-            
-            // Tagline
-            Text("Train smarter, train harder.")
-                .font(.subheadline)
-                .foregroundColor(.black)
-                .padding(.bottom, 70)
-            
-                
-        }
-        .background(Color("Brand Color OffWhite")) // Set your background color
-        .edgesIgnoringSafeArea(.all)
-        .onAppear {
-                    // Delay for 2 seconds, then navigate
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                        navigateToLogin = true
+                .onAppear {
+                    // Automatically hide the splash screen after a delay
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        withAnimation {
+                            showSplashScreen = false
+                        }
                     }
                 }
-                // Navigation to Login Screen
-        .fullScreenCover(isPresented: $navigateToLogin) {
-            LoginScreen(userData: userData)
-//            HomeScreen()
+        } else {
+            MainTabView() // Show the main content with TabView
         }
     }
 }
 
-struct SplashScreenView_Previews: PreviewProvider {
-    static var previews: some View {
-        SplashScreen()
+struct MainTabView: View {
+    var body: some View {
+        TabView {
+            NavigationView {
+                HomeScreen()
+            }
+            .tabItem {
+                Image(systemName: "house")
+            }
+
+            NavigationView {
+                HomeScreen()
+            }
+            .tabItem {
+                Image(systemName: "calendar")
+            }
+
+            NavigationView {
+                HomeScreen()
+            }
+            .tabItem {
+                Image(systemName: "sportscourt")
+            }
+
+            NavigationView {
+                HomeScreen()
+            }
+            .tabItem {
+                Image(systemName: "figure.walk")
+            }
+
+            NavigationView {
+                HomeScreen()
+            }
+            .tabItem {
+                Image(systemName: "person")
+            }
+        }
     }
 }
-
-
 
