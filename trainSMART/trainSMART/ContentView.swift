@@ -20,7 +20,22 @@ struct ContentView: View {
     }
 }
 
+import SwiftUI
+
 struct MainTabView: View {
+    init() {
+        // Customize the Tab Bar appearance
+        let appearance = UITabBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor(named: "Dark blue") // Use your custom color
+        appearance.stackedLayoutAppearance.normal.iconColor = UIColor(.white) // Customize icon color
+        appearance.stackedLayoutAppearance.selected.iconColor = UIColor(named: "Blue-gray") // Customize selected icon color
+        
+        // Apply the appearance
+        UITabBar.appearance().standardAppearance = appearance
+        UITabBar.appearance().scrollEdgeAppearance = appearance // For iOS 15+
+    }
+
     var body: some View {
         TabView {
             NavigationView {
@@ -45,7 +60,7 @@ struct MainTabView: View {
             }
 
             NavigationView {
-                HomeScreen()
+                CatalogScreen()
             }
             .tabItem {
                 Image(systemName: "figure.walk")
@@ -60,4 +75,3 @@ struct MainTabView: View {
         }
     }
 }
-

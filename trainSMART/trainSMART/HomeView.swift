@@ -2,7 +2,7 @@ import SwiftUI
 
 struct HomeScreen: View {
     private let quoteText = " "
-    
+    @State var goToCatalog = false
     var body: some View {
         NavigationStack {
             GeometryReader { geometry in
@@ -14,7 +14,7 @@ struct HomeScreen: View {
                         Image("trainSMARTLogo")
                             .resizable()
                             .scaledToFit()
-                            .frame(height: 120) // Adjusted logo height
+                            .frame(height: 150) // Adjusted logo height
                             .padding(.top, 20) // Adjust top padding to place logo correctly
                     }
                     .frame(height: 150) // Ensures the logo section is fixed at the top
@@ -78,7 +78,7 @@ struct HomeScreen: View {
                                     .foregroundColor(.white)
                                 Spacer()
                                 Button(action: {
-                                    
+                                    goToCatalog = true
                                 }) {
                                     Text("View All")
                                         .foregroundColor(.black)
@@ -88,6 +88,9 @@ struct HomeScreen: View {
                                         .cornerRadius(8)
                                 }
                                 .padding(.trailing, 80)
+                                .navigationDestination(isPresented: $goToCatalog) {
+                                    CatalogScreen()
+                                }
                             }
                             .padding(.bottom)
                             
