@@ -46,7 +46,7 @@ struct MainTabView: View {
             }
 
             NavigationView {
-                HomeScreen()
+                WeeklyScreen()
             }
             .tabItem {
                 Image(systemName: "calendar")

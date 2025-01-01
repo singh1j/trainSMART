@@ -38,8 +38,8 @@ struct SplashScreen: View {
                 }
                 // Navigation to Login Screen
         .fullScreenCover(isPresented: $navigateToLogin) {
-            LoginScreen(userData: userData)
-//            HomeScreen()
+//            LoginScreen(userData: userData)
+            HomeScreen()
         }
     }
 }

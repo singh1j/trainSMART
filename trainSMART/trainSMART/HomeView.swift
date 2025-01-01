@@ -95,39 +95,42 @@ struct HomeScreen: View {
                             .padding(.bottom)
                             
                             // Image Section with field image
-                            ZStack {
-                                Image("field-image") // Replace with your stadium image
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(height: 220)
-                                    .clipShape(RoundedRectangle(cornerRadius: 20))
-                                VStack(alignment: .leading, spacing: 0) {
-                                    HStack {
-                                        VStack {
-                                            Image(systemName: "timer")
-                                            Text("~20 Minutes")
-                                                .font(.system(size: 14))
-                                        }
-                                        .foregroundColor(.black)
-                                        .padding(.leading)
-                                        .padding(.top)
-                                        .padding(.bottom)
-                                        Spacer()
-                                        Text("Ball, Cones, Goal")
-                                            .padding()
-                                            .font(.system(size: 15))
+                            NavigationLink (destination: DrillScreen()) {
+                                ZStack {
+                                    Image("field-image") // Replace with your stadium image
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(height: 220)
+                                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                                    VStack(alignment: .leading, spacing: 0) {
+                                        HStack {
+                                            VStack {
+                                                Image(systemName: "timer")
+                                                Text("~20 Minutes")
+                                                    .font(.system(size: 14))
+                                            }
                                             .foregroundColor(.black)
+                                            .padding(.leading)
+                                            .padding(.top)
+                                            .padding(.bottom)
+                                            Spacer()
+                                            Text("Ball, Cones, Goal")
+                                                .padding()
+                                                .font(.system(size: 15))
+                                                .foregroundColor(.black)
+                                        }
+                                        .padding(.horizontal)
+                                        .frame(width: 330)
+                                        .background(Color.white) // Add white background
+                                        .cornerRadius(15) // Add rounded corners to the background
                                     }
                                     .padding(.horizontal)
-                                    .frame(width: 330)
-                                    .background(Color.white) // Add white background
-                                    .cornerRadius(15) // Add rounded corners to the background
+                                    .padding(.top, 150)
+                                    .frame(alignment: .bottom)
                                 }
-                                .padding(.horizontal)
-                                .padding(.top, 150)
-                                .frame(alignment: .bottom)
+                                .padding(.bottom)
                             }
-                            .padding(.bottom)
+                        
                             
                             // Quote Section
                             VStack {
@@ -152,9 +155,11 @@ struct HomeScreen: View {
                     }
                     .padding(.bottom, 0) // Remove extra padding at the bottom
                 }
+                .background(Color("Brand Color Blue"))
             }
             .edgesIgnoringSafeArea(.top) // Ensures the top of the screen is used without extra black space
         }
+        .tint(Color("Dark blue"))
     }
 }
 

@@ -7,33 +7,99 @@
 
 import SwiftUI
 
+struct Category: Identifiable {
+    let id = UUID()
+    let title: String
+    let icon: String
+}
+
+import SwiftUI
+
 struct CatalogScreen: View {
+    let categories = [
+        Category(title: "Goalkeeping", icon: "hand.raised"),
+        Category(title: "Defending", icon: "shield"),
+        Category(title: "Touch/Control", icon: "arrow.up.arrow.down"),
+        Category(title: "Shooting", icon: "scope"),
+        Category(title: "Passing", icon: "soccerball"),
+        Category(title: "Dribbling", icon: "figure.run")
+    ]
+    
     var body: some View {
-        VStack {
-            VStack(spacing: 0) {
-                // Logo section with adjusted size and no unnecessary space
-                ZStack {
-                    Color("Brand Color OffWhite")
-                        .frame(height: 150) // Reduced height of the logo section
-                    Image("trainSMARTLogo")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(height: 150) // Adjusted logo height
-                        .padding(.top, 20) // Adjust top padding to place logo correctly
+        NavigationStack {
+            GeometryReader { geometry in
+                VStack(spacing: 0) {
+                    // Logo section with adjusted size
+                    ZStack {
+                        Color("Brand Color OffWhite")
+                            .frame(height: 150) // Fixed height for the logo section
+                        Image("trainSMARTLogo")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 150) // Adjusted logo height
+                            .padding(.top, 20) // Adjust top padding to place logo correctly
+                    }
+                    .frame(height: 150) // Ensures the logo section height is consistent
+                    
+                    // ScrollView for training categories
+                    ScrollView {
+                        VStack(spacing: 10) {
+                            Text("Training Categories")
+                                .font(.system(size: 25))
+                                .foregroundColor(Color("Brand Color OffWhite"))
+                                .padding(.top, 10)
+                                .padding(.bottom)
+                            
+                            // Categories list
+                            ForEach(categories) { category in
+                                HStack {
+                                    // Title text
+                                    Text(category.title)
+                                        .font(.subheadline)
+                                        .foregroundColor(.black)
+                                        .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading) // Align to the left
+                                        .padding()
+                                    
+                                    // Icon
+                                    Image(systemName: category.icon)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 20, height: 20) // Set fixed size for consistent alignment
+                                        .foregroundColor(.black) // Keep the icon color black
+                                        .padding(.horizontal)
+                                    
+                                    // Button
+                                    Button(action: {
+                                        // Button action
+                                    }) {
+                                        Text("View Category")
+                                            .foregroundColor(.black)
+                                            .font(.caption)
+                                            .padding()
+                                    }
+                                    .background(.white)
+                                    .cornerRadius(15)
+                                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .trailing) // Align to the right
+                                    .padding()
+                                }
+                                .frame(height: 70) // Set uniform height for all rows
+                                .background(Color("Lavender")) // Background color for each row
+                                .cornerRadius(10)
+                                .padding(.bottom)
+                            }
+                            .padding(.horizontal)
+                        }
+                        .padding(.bottom, 10) // Ensure spacing between content and the bottom
+                    }
+                    .frame(height: geometry.size.height - 150) // Calculate height dynamically based on available space
                 }
-                .frame(height: 150)
+                .background(Color("Brand Color Blue"))
             }
-            Text("Training Categories")
-                .font(.system(size: 25))
-                .foregroundStyle(Color("Brand Color OffWhite"))
-                .padding(.top, 10)
-            Spacer()
-            
+            .edgesIgnoringSafeArea(.top)
         }
-        .background(Color("Brand Color Blue"))
-        .edgesIgnoringSafeArea(.top)
     }
 }
+
 
 #Preview {
     CatalogScreen()
