@@ -21,7 +21,7 @@ func getRating(_ rating: Int) -> Color {
     case 0:
         return Color.red.opacity(0.7)
     case 1...2:
-        return Color.orange.opacity(baseOpacity)
+        return Color("Orange").opacity(baseOpacity)
     case 3:
         return Color.yellow.opacity(baseOpacity)
     case 4...5:
@@ -39,6 +39,7 @@ struct WeeklyScreen: View {
         DayData(dayInitial: "F", dayName: "Friday", minutesSpent: 30, drills: 2, rating: 3),
         DayData(dayInitial: "S", dayName: "Saturday", minutesSpent: 80, drills: 7, rating: 5)
     ]
+    @State var goToDetails = false
     var body: some View {
         NavigationStack {
             GeometryReader { geometry in
@@ -55,16 +56,32 @@ struct WeeklyScreen: View {
                     }
                     .frame(height: 150) // Ensures the logo section height is consistent
                     
-                    // ScrollView for training categories
                     ScrollView {
                         VStack(spacing: 10) {
-                            Text("This week...")
-                                .font(.system(size: 25))
-                                .foregroundColor(Color("Brand Color OffWhite"))
-                                .padding(.top, 10)
-                                .padding(.bottom)
+                            HStack {
+                                Text("This week...")
+                                    .font(.system(size: 25))
+                                    .foregroundColor(Color("Brand Color OffWhite"))
+                                    .padding()
+                                Spacer()
+                                Button(action: {
+                                    goToDetails = true
+                                }) {
+                                    Text("More")
+                                        .font(.subheadline)
+                                        .foregroundStyle(Color.black)
+                                        .padding()
+                                }
+                                .background(Color("Brand Color OffWhite"))
+                                .cornerRadius(15)
+                                .padding()
+                                .navigationDestination(isPresented: $goToDetails) {
+                                    DetailedStatsScreen()
+                                }
+                            }
+                            .padding(.top)
                             
-                            // Categories list
+                            // Days list
                             ForEach(days) { day in
                                 HStack {
                                     VStack {
@@ -127,8 +144,11 @@ struct WeeklyScreen: View {
                     .background(Color("Brand Color Blue"))
                 }
                 .edgesIgnoringSafeArea(.top)
+                
             }
         }
+        .tint(Color("Dark blue"))
+
 //        func getRating(_ rating: Int) -> Color {
 //            switch rating {
 //            case 0:

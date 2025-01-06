@@ -3,6 +3,7 @@ import SwiftUI
 struct HomeScreen: View {
     private let quoteText = " "
     @State var goToCatalog = false
+    @State var goToWeekly = false
     var body: some View {
         NavigationStack {
             GeometryReader { geometry in
@@ -30,7 +31,7 @@ struct HomeScreen: View {
                                     .foregroundColor(.white)
                                 Spacer()
                                 Button(action: {
-                                    
+                                    goToWeekly = true
                                 }) {
                                     Text("See More")
                                         .foregroundColor(.black)
@@ -40,6 +41,9 @@ struct HomeScreen: View {
                                         .cornerRadius(8)
                                 }
                                 .padding(.trailing, 40)
+                                .navigationDestination(isPresented: $goToWeekly) {
+                                    WeeklyScreen()
+                                }
                             }
                             .padding(.top, 20) // Reduced top padding
                             .padding(.bottom, 15)
