@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct SplashScreen: View {
-    @StateObject private var userData = UserData()
     @State private var navigateToLogin = false // State to control navigation
     var body: some View {
         VStack {

@@ -1,8 +1,8 @@
 import SwiftUI
-
+import FirebaseAuth
 struct ContentView: View {
     @State private var showSplashScreen = true // State to control the splash screen
-
+    @State private var selectedTab = 0
     var body: some View {
         if showSplashScreen {
             SplashScreen()
@@ -15,63 +15,74 @@ struct ContentView: View {
                     }
                 }
         } else {
-            MainTabView() // Show the main content with TabView
+             if Auth.auth().currentUser != nil {
+                 MainTabView() // Show the main content with TabView
+             } else {
+                LoginScreen() // Show the login screen if the user is not logged in
+             }
         }
     }
 }
-
-import SwiftUI
-
 struct MainTabView: View {
     init() {
         // Customize the Tab Bar appearance
         let appearance = UITabBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = UIColor(named: "Dark blue") // Use your custom color
-        appearance.stackedLayoutAppearance.normal.iconColor = UIColor(.white) // Customize icon color
-        appearance.stackedLayoutAppearance.selected.iconColor = UIColor(named: "Blue-gray") // Customize selected icon color
+        appearance.backgroundColor = UIColor(named: "Dark blue")
+        appearance.stackedLayoutAppearance.normal.iconColor = UIColor(.white)
+        appearance.stackedLayoutAppearance.selected.iconColor = UIColor(named: "Blue-gray")
         
-        // Apply the appearance
         UITabBar.appearance().standardAppearance = appearance
-        UITabBar.appearance().scrollEdgeAppearance = appearance // For iOS 15+
+        UITabBar.appearance().scrollEdgeAppearance = appearance
     }
 
+
     var body: some View {
-        TabView {
+        TabView() {
             NavigationView {
                 HomeScreen()
             }
             .tabItem {
                 Image(systemName: "house")
+                    .frame(width: 20, height: 20)
             }
+            .tag(0)
 
             NavigationView {
                 WeeklyScreen()
             }
             .tabItem {
                 Image(systemName: "calendar")
+                    .frame(width: 20, height: 20)
             }
+            .tag(1)
 
             NavigationView {
-                HomeScreen()
+                NewTrainingScreen()
             }
             .tabItem {
-                Image(systemName: "sportscourt")
+                Image(systemName: "plus.app.fill")
+                    .frame(width: 20, height: 20)
             }
+            .tag(2)
 
             NavigationView {
                 CatalogScreen()
             }
             .tabItem {
-                Image(systemName: "figure.walk")
+                Image(systemName: "figure.indoor.soccer")
+                    .frame(width: 20, height: 20)
             }
+            .tag(3)
 
             NavigationView {
-                HomeScreen()
+                ProfileView()
             }
             .tabItem {
                 Image(systemName: "person")
+                    .frame(width: 20, height: 20)
             }
+            .tag(4)
         }
     }
 }

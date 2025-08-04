@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A32666002D2F003500B8D060 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = A32665FF2D2F003500B8D060 /* FirebaseAnalytics */; };
+		A32666022D2F003500B8D060 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A32666012D2F003500B8D060 /* FirebaseAuth */; };
+		A32666042D2F003500B8D060 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = A32666032D2F003500B8D060 /* FirebaseCore */; };
+		A32666062D2F003500B8D060 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = A32666052D2F003500B8D060 /* FirebaseCrashlytics */; };
+		A32666082D2F003500B8D060 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = A32666072D2F003500B8D060 /* FirebaseFirestore */; };
 		A39DD7982D2462AC0057473C /* YouTubePlayerKit in Frameworks */ = {isa = PBXBuildFile; productRef = A39DD7972D2462AC0057473C /* YouTubePlayerKit */; };
 /* End PBXBuildFile section */
 
@@ -27,7 +32,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A32666002D2F003500B8D060 /* FirebaseAnalytics in Frameworks */,
+				A32666022D2F003500B8D060 /* FirebaseAuth in Frameworks */,
+				A32666062D2F003500B8D060 /* FirebaseCrashlytics in Frameworks */,
+				A32666042D2F003500B8D060 /* FirebaseCore in Frameworks */,
 				A39DD7982D2462AC0057473C /* YouTubePlayerKit in Frameworks */,
+				A32666082D2F003500B8D060 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +81,11 @@
 			name = trainSMART;
 			packageProductDependencies = (
 				A39DD7972D2462AC0057473C /* YouTubePlayerKit */,
+				A32665FF2D2F003500B8D060 /* FirebaseAnalytics */,
+				A32666012D2F003500B8D060 /* FirebaseAuth */,
+				A32666032D2F003500B8D060 /* FirebaseCore */,
+				A32666052D2F003500B8D060 /* FirebaseCrashlytics */,
+				A32666072D2F003500B8D060 /* FirebaseFirestore */,
 			);
 			productName = trainSMART;
 			productReference = A3537AA02D1A3F3700A7C649 /* trainSMART.app */;
@@ -102,6 +117,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				A39DD7962D2462AC0057473C /* XCRemoteSwiftPackageReference "YouTubePlayerKit" */,
+				A32665FE2D2F003500B8D060 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = A3537AA12D1A3F3700A7C649 /* Products */;
@@ -258,23 +274,28 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = trainSMART/trainSMART.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"trainSMART/Preview Content\"";
-				DEVELOPMENT_TEAM = B2YV79XA88;
+				DEVELOPMENT_TEAM = G62R34LMCA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.jugadsingh.trainSMART;
+				PRODUCT_BUNDLE_IDENTIFIER = com.trainsmart.football;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -290,22 +311,25 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = trainSMART/trainSMART.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"trainSMART/Preview Content\"";
-				DEVELOPMENT_TEAM = B2YV79XA88;
+				DEVELOPMENT_TEAM = G62R34LMCA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.jugadsingh.trainSMART;
+				PRODUCT_BUNDLE_IDENTIFIER = com.trainsmart.football;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -341,6 +365,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		A32665FE2D2F003500B8D060 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.6.0;
+			};
+		};
 		A39DD7962D2462AC0057473C /* XCRemoteSwiftPackageReference "YouTubePlayerKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SvenTiigi/YouTubePlayerKit.git";
@@ -352,6 +384,31 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		A32665FF2D2F003500B8D060 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A32665FE2D2F003500B8D060 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		A32666012D2F003500B8D060 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A32665FE2D2F003500B8D060 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		A32666032D2F003500B8D060 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A32665FE2D2F003500B8D060 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		A32666052D2F003500B8D060 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A32665FE2D2F003500B8D060 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		A32666072D2F003500B8D060 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A32665FE2D2F003500B8D060 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
 		A39DD7972D2462AC0057473C /* YouTubePlayerKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A39DD7962D2462AC0057473C /* XCRemoteSwiftPackageReference "YouTubePlayerKit" */;

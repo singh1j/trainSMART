@@ -6,15 +6,26 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main
 struct trainSMARTApp: App {
-    @StateObject private var userData = UserData()
+    @AppStorage("isLoggedIn") private var isLoggedIn = false    
+    init() {
+        FirebaseApp.configure()
+        NotificationManager.instance.requestAuthorization()
+    }
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(userData)
-            
+            if isLoggedIn {
+                ContentView()
+                    .onAppear {
+                        checkAndResetWeeklyStats()
+                    }
+            } else {
+                LoginScreen()
+            }
         }
     }
 }

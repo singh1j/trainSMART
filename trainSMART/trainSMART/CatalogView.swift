@@ -52,46 +52,45 @@ struct CatalogScreen: View {
                             
                             // Categories list
                             ForEach(categories) { category in
-                                HStack {
-                                    // Title text
-                                    Text(category.title)
-                                        .font(.subheadline)
-                                        .foregroundColor(.black)
-                                        .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading) // Align to the left
-                                        .padding()
-                                    
-                                    // Icon
-                                    Image(systemName: category.icon)
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 20, height: 20) // Set fixed size for consistent alignment
-                                        .foregroundColor(.black) // Keep the icon color black
-                                        .padding(.horizontal)
-                                    
-                                    // Button
-                                    Button(action: {
-                                        // Button action
-                                    }) {
+                                NavigationLink(destination: DrillCatScreen(skill: category.title)) {
+                                    HStack {
+                                        // Title text
+                                        Text(category.title)
+                                            .font(.subheadline)
+                                            .foregroundColor(.black)
+                                            .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                                            .padding()
+                                        
+                                        // Icon
+                                        Image(systemName: category.icon)
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 20, height: 20)
+                                            .foregroundColor(.black)
+                                            .padding(.horizontal)
+                                        
+                                        // Text label instead of button
                                         Text("View Category")
                                             .foregroundColor(.black)
                                             .font(.caption)
                                             .padding()
+                                            .background(.white)
+                                            .cornerRadius(15)
+                                            .frame(minWidth: 0, maxWidth: .infinity, alignment: .trailing)
+                                            .padding()
                                     }
-                                    .background(.white)
-                                    .cornerRadius(15)
-                                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .trailing) // Align to the right
-                                    .padding()
+                                    .frame(height: 70)
+                                    .background(Color("Lavender"))
+                                    .cornerRadius(10)
+                                    .padding(.bottom)
                                 }
-                                .frame(height: 70) // Set uniform height for all rows
-                                .background(Color("Lavender")) // Background color for each row
-                                .cornerRadius(10)
-                                .padding(.bottom)
                             }
                             .padding(.horizontal)
+
                         }
                         .padding(.bottom, 10) // Ensure spacing between content and the bottom
                     }
-                    .frame(height: geometry.size.height - 150) // Calculate height dynamically based on available space
+//                    .frame(height: geometry.size.height - 150) // Calculate height dynamically based on available space
                 }
                 .background(Color("Brand Color Blue"))
             }
